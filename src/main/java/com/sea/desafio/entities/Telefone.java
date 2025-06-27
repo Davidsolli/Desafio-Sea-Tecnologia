@@ -1,11 +1,17 @@
 package com.sea.desafio.entities;
 
 import com.sea.desafio.enums.TipoTelefone;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "tb_telefone")
 public class Telefone {
 
     @Id
