@@ -1,4 +1,4 @@
-package com.sea.desafio.dtos.telefone.request;
+package com.sea.desafio.dtos.telefone.response;
 
 import com.sea.desafio.enums.TipoTelefone;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TelefoneDTORequest {
+public class TelefoneDTOResponse {
 
     private String numero;
     private TipoTelefone tipoTelefone;

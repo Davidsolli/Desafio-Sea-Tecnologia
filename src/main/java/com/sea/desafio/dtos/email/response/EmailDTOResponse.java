@@ -1,4 +1,4 @@
-package com.sea.desafio.dtos.email.request;
+package com.sea.desafio.dtos.email.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmailDTORequest {
+public class EmailDTOResponse {
 
     private String email;
 }

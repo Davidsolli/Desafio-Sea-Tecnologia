@@ -1,4 +1,4 @@
-package com.sea.desafio.dtos.endereco.request;
+package com.sea.desafio.dtos.endereco.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EnderecoDTORequest {
+public class EnderecoDTOResponse {
 
     private String cep;
     private String logradouro;
