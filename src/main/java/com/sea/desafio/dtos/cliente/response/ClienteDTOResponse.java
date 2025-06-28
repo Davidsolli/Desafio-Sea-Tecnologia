@@ -21,4 +21,8 @@ public class ClienteDTOResponse {
     private List<EnderecoDTOResponse> listaEndereco;
     private List<EmailDTOResponse> listaEmail;
     private List<TelefoneDTOResponse> listaTelefone;
+
+    public String getCpf() {
+        return cpf.replaceAll("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4");
+    }
 }

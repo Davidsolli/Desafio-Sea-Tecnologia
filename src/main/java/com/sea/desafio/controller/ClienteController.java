@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cliente")
@@ -18,7 +20,7 @@ public class ClienteController {
     private final ClienteService clienteService;
 
     @PostMapping
-    public ResponseEntity<ClienteDTOResponse> salvarNovoCliente(@RequestBody ClienteDTORequest clienteDTORequest) {
+    public ResponseEntity<ClienteDTOResponse> salvarNovoCliente(@Valid @RequestBody ClienteDTORequest clienteDTORequest) {
         return ResponseEntity.ok(clienteService.salvarNovoCliente(clienteDTORequest));
     }
 }

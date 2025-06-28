@@ -14,4 +14,12 @@ public class TelefoneDTOResponse {
 
     private String numero;
     private TipoTelefone tipoTelefone;
+
+    public String getNumero() {
+        if (tipoTelefone == TipoTelefone.CELULAR) {
+            return numero.replaceAll("(\\d{2})(\\d{1})(\\d{4})(\\d{4})", "($1) $2$3-$4");
+        } else {
+            return numero.replaceAll("(\\d{2})(\\d{4})(\\d{4})", "($1) $2-$3");
+        }
+    }
 }

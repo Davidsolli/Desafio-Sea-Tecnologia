@@ -17,4 +17,8 @@ public class EnderecoDTOResponse {
     private String cidade;
     private String uf;
     private String complemento;
+
+    public String getCep() {
+        return cep.replaceAll("(\\d{5})(\\d{3})", "$1-$2");
+    }
 }
