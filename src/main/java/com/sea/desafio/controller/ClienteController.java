@@ -5,12 +5,10 @@ import com.sea.desafio.dtos.cliente.response.ClienteDTOResponse;
 import com.sea.desafio.services.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,5 +22,10 @@ public class ClienteController {
             @Valid @RequestBody ClienteDTORequest clienteDTORequest
     ) {
         return ResponseEntity.ok(clienteService.salvarNovoCliente(clienteDTORequest));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ClienteDTOResponse>> listaClientes() {
+        return ResponseEntity.ok( clienteService.listaClientes());
     }
 }

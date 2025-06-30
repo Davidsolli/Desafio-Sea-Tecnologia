@@ -118,4 +118,8 @@ public class ClienteConverter {
     public List<TelefoneDTOResponse> paraTelefoneDTOLista(List<Telefone> telefoneEntityLista) {
         return telefoneEntityLista.stream().map(this::paraTelefoneDTO).collect(Collectors.toList());
     }
+
+    public List<ClienteDTOResponse> paraClienteDTOResponseLista(List<Cliente> clienteEntityLista) {
+        return clienteEntityLista.stream().map(this::paraClienteDTO).collect(Collectors.toList());
+    }
 }

@@ -8,6 +8,8 @@ import com.sea.desafio.repositories.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ClienteService {
@@ -18,5 +20,9 @@ public class ClienteService {
     public ClienteDTOResponse salvarNovoCliente(ClienteDTORequest clienteDTORequest) {
         Cliente cliente = clienteConverter.paraClienteEntity(clienteDTORequest);
         return clienteConverter.paraClienteDTO(clienteRepository.save(cliente));
+    }
+
+    public List<ClienteDTOResponse> listaClientes() {
+        return clienteConverter.paraClienteDTOResponseLista(clienteRepository.listaCliente());
     }
 }
