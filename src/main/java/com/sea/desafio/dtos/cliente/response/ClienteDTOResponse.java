@@ -18,7 +18,7 @@ public class ClienteDTOResponse {
 
     private String nome;
     private String cpf;
-    private List<EnderecoDTOResponse> listaEndereco;
+    private EnderecoDTOResponse endereco;
     private List<EmailDTOResponse> listaEmail;
     private List<TelefoneDTOResponse> listaTelefone;
 

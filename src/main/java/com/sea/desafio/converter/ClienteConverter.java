@@ -23,12 +23,9 @@ public class ClienteConverter {
     /* Para entity */
 
     public Cliente paraClienteEntity(ClienteDTORequest clienteDTORequest) {
-        return Cliente.builder()
+        Cliente cliente = Cliente.builder()
                 .nome(clienteDTORequest.getNome())
                 .cpf(clienteDTORequest.getCpf())
-                .enderecos(
-                        clienteDTORequest.getListaEndereco() != null ? paraEnderecoLista(clienteDTORequest.getListaEndereco()) : null
-                )
                 .emails(
                         clienteDTORequest.getListaEmail() != null ? paraEmailLista(clienteDTORequest.getListaEmail()) : null
                 )
@@ -36,6 +33,14 @@ public class ClienteConverter {
                         clienteDTORequest.getListaTelefone() != null ? paraTelefoneLista(clienteDTORequest.getListaTelefone()) : null
                 )
                 .build();
+
+        if (clienteDTORequest.getEndereco() != null) {
+            Endereco endereco = paraEnderecoEntity(clienteDTORequest.getEndereco());
+            endereco.setCliente(cliente);
+            cliente.setEndereco(endereco);
+        }
+
+        return cliente;
     }
 
     public Endereco paraEnderecoEntity(EnderecoDTORequest enderecoDTORequest) {
@@ -62,10 +67,6 @@ public class ClienteConverter {
                 .build();
     }
 
-    public List<Endereco> paraEnderecoLista(List<EnderecoDTORequest> enderecoDTOList) {
-        return enderecoDTOList.stream().map(this::paraEnderecoEntity).collect(Collectors.toList());
-    }
-
     public List<Email> paraEmailLista(List<EmailDTORequest> emailDTOList) {
         return emailDTOList.stream().map(this::paraEmailEntity).collect(Collectors.toList());
     }
@@ -80,7 +81,7 @@ public class ClienteConverter {
         return ClienteDTOResponse.builder()
                 .nome(cliente.getNome())
                 .cpf(cliente.getCpf())
-                .listaEndereco(cliente.getEnderecos() != null ? paraEnderecoDTOlista(cliente.getEnderecos()) : null)
+                .endereco(paraEnderecoDTO(cliente.getEndereco()))
                 .listaEmail(cliente.getEmails() != null ? paraEmailDTOLista(cliente.getEmails()) : null)
                 .listaTelefone(cliente.getTelefones() != null ? paraTelefoneDTOLista(cliente.getTelefones()) : null)
                 .build();
@@ -108,10 +109,6 @@ public class ClienteConverter {
                 .numero(telefone.getNumero())
                 .tipoTelefone(telefone.getTipoTelefone())
                 .build();
-    }
-
-    public List<EnderecoDTOResponse> paraEnderecoDTOlista(List<Endereco> enderecoEntityLista) {
-        return enderecoEntityLista.stream().map(this::paraEnderecoDTO).collect(Collectors.toList());
     }
 
     public List<EmailDTOResponse> paraEmailDTOLista(List<Email> emailsEntityLista) {

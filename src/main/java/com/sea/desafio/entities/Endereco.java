@@ -24,4 +24,7 @@ public class Endereco {
     private String cidade;
     private String uf;
     private String complemento;
+    @OneToOne
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    private Cliente cliente;
 }

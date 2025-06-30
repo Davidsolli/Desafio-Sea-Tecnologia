@@ -27,9 +27,8 @@ public class ClienteDTORequest {
     @Pattern(regexp = "\\d{11}", message = "O CPF deve conter exatamente 11 dígitos numéricos")
     @NotBlank(message = "Você deve preencher o campo cpf")
     private String cpf;
-    @NotEmpty(message = "Deve ter pelo menos um endereço")
     @Valid
-    private List<EnderecoDTORequest> listaEndereco;
+    private EnderecoDTORequest endereco;
     @NotEmpty(message = "Deve ter pelo menos um email")
     @Valid
     private List<EmailDTORequest> listaEmail;

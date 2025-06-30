@@ -20,7 +20,9 @@ public class ClienteController {
     private final ClienteService clienteService;
 
     @PostMapping
-    public ResponseEntity<ClienteDTOResponse> salvarNovoCliente(@Valid @RequestBody ClienteDTORequest clienteDTORequest) {
+    public ResponseEntity<ClienteDTOResponse> salvarNovoCliente(
+            @Valid @RequestBody ClienteDTORequest clienteDTORequest
+    ) {
         return ResponseEntity.ok(clienteService.salvarNovoCliente(clienteDTORequest));
     }
 }
