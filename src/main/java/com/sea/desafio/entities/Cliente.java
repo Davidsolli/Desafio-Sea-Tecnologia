@@ -1,6 +1,7 @@
 package com.sea.desafio.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente {
@@ -21,9 +23,8 @@ public class Cliente {
     private String nome;
     private String cpf;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private List<Endereco> enderecos = new ArrayList<>();
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private Endereco endereco;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
