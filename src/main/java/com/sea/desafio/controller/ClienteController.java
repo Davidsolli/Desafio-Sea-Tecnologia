@@ -1,6 +1,7 @@
 package com.sea.desafio.controller;
 
 import com.sea.desafio.dtos.cliente.request.ClienteDTORequest;
+import com.sea.desafio.dtos.cliente.request.ClienteMinDTORequest;
 import com.sea.desafio.dtos.cliente.response.ClienteDTOResponse;
 import com.sea.desafio.services.ClienteService;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,12 @@ public class ClienteController {
     @GetMapping
     public ResponseEntity<List<ClienteDTOResponse>> listaClientes() {
         return ResponseEntity.ok( clienteService.listaClientes());
+    }
+
+    @PutMapping("/{cliente_id}")
+    public ResponseEntity<ClienteDTOResponse> atualizarDadosDeCliente(
+            @Valid @RequestBody ClienteMinDTORequest clienteMinDTORequest, @PathVariable Long cliente_id
+    ) {
+        return ResponseEntity.ok(clienteService.atualizarDadosDeCliente(clienteMinDTORequest, cliente_id));
     }
 }

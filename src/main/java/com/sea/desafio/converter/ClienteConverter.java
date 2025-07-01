@@ -1,6 +1,7 @@
 package com.sea.desafio.converter;
 
 import com.sea.desafio.dtos.cliente.request.ClienteDTORequest;
+import com.sea.desafio.dtos.cliente.request.ClienteMinDTORequest;
 import com.sea.desafio.dtos.cliente.response.ClienteDTOResponse;
 import com.sea.desafio.dtos.email.request.EmailDTORequest;
 import com.sea.desafio.dtos.email.response.EmailDTOResponse;
@@ -121,5 +122,18 @@ public class ClienteConverter {
 
     public List<ClienteDTOResponse> paraClienteDTOResponseLista(List<Cliente> clienteEntityLista) {
         return clienteEntityLista.stream().map(this::paraClienteDTO).collect(Collectors.toList());
+    }
+
+    // Atualizar dados de cliente
+
+    public Cliente atualizarDadosDeClientes(Cliente cliente, ClienteMinDTORequest clienteMinDTORequest) {
+        return Cliente.builder()
+                .id(cliente.getId())
+                .nome(clienteMinDTORequest.getNome() != null ? clienteMinDTORequest.getNome() : cliente.getNome())
+                .cpf(clienteMinDTORequest.getCpf() != null ? clienteMinDTORequest.getCpf() : cliente.getCpf())
+                .endereco(cliente.getEndereco())
+                .emails(cliente.getEmails())
+                .telefones(cliente.getTelefones())
+                .build();
     }
 }

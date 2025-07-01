@@ -2,8 +2,10 @@ package com.sea.desafio.services;
 
 import com.sea.desafio.converter.ClienteConverter;
 import com.sea.desafio.dtos.cliente.request.ClienteDTORequest;
+import com.sea.desafio.dtos.cliente.request.ClienteMinDTORequest;
 import com.sea.desafio.dtos.cliente.response.ClienteDTOResponse;
 import com.sea.desafio.entities.Cliente;
+import com.sea.desafio.exceptions.ResourceNotFoundException;
 import com.sea.desafio.repositories.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,13 @@ public class ClienteService {
 
     public List<ClienteDTOResponse> listaClientes() {
         return clienteConverter.paraClienteDTOResponseLista(clienteRepository.listaCliente());
+    }
+
+    public ClienteDTOResponse atualizarDadosDeCliente(ClienteMinDTORequest clienteMinDTORequest, Long cliente_id) {
+        Cliente cliente = clienteRepository
+                .findById(cliente_id)
+                .orElseThrow(() -> new ResourceNotFoundException("cliente não encontrado"));
+        Cliente clienteAtualizado = clienteConverter.atualizarDadosDeClientes(cliente, clienteMinDTORequest);
+        return clienteConverter.paraClienteDTO(clienteRepository.save(clienteAtualizado));
     }
 }

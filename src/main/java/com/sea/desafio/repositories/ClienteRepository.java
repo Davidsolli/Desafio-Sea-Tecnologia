@@ -11,5 +11,4 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     //Alterar para Set para mais de 2 tabelas
     @Query("SELECT obj FROM Cliente obj JOIN FETCH obj.telefones JOIN FETCH obj.endereco")
     List<Cliente> listaCliente();
-
 }
