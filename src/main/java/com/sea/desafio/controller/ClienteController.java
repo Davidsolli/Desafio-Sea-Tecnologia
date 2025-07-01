@@ -30,10 +30,16 @@ public class ClienteController {
         return ResponseEntity.ok( clienteService.listaClientes());
     }
 
-    @PutMapping("/{cliente_id}")
+    @PutMapping("/{clienteId}")
     public ResponseEntity<ClienteDTOResponse> atualizarDadosDeCliente(
-            @Valid @RequestBody ClienteMinDTORequest clienteMinDTORequest, @PathVariable Long cliente_id
+            @Valid @RequestBody ClienteMinDTORequest clienteMinDTORequest, @PathVariable Long clienteId
     ) {
-        return ResponseEntity.ok(clienteService.atualizarDadosDeCliente(clienteMinDTORequest, cliente_id));
+        return ResponseEntity.ok(clienteService.atualizarDadosDeCliente(clienteMinDTORequest, clienteId));
+    }
+
+    @DeleteMapping("/{clienteId}")
+    public ResponseEntity<Void> excluirCliente(@PathVariable Long clienteId) {
+        clienteService.excluirCliente(clienteId);
+        return ResponseEntity.noContent().build();
     }
 }
