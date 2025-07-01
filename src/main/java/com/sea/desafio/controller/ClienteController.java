@@ -1,9 +1,11 @@
 package com.sea.desafio.controller;
 
+import com.sea.desafio.dtos.ViaCepDTO;
 import com.sea.desafio.dtos.cliente.request.ClienteDTORequest;
 import com.sea.desafio.dtos.cliente.request.ClienteMinDTORequest;
 import com.sea.desafio.dtos.cliente.response.ClienteDTOResponse;
 import com.sea.desafio.services.ClienteService;
+import com.sea.desafio.services.ViaCepService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ClienteController {
 
     private final ClienteService clienteService;
+    private final ViaCepService viaCepService;
 
     @PostMapping
     public ResponseEntity<ClienteDTOResponse> salvarNovoCliente(
@@ -46,5 +49,10 @@ public class ClienteController {
     public ResponseEntity<Void> excluirCliente(@PathVariable Long clienteId) {
         clienteService.excluirCliente(clienteId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/endereco/{cep}")
+    public ResponseEntity<ViaCepDTO> findAddressData(@PathVariable("cep") String cep) {
+        return ResponseEntity.ok(viaCepService.encontrarEnderecoPorCep(cep));
     }
 }
