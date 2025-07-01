@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 public class ClienteDTOResponse {
 
+    private Long id;
     private String nome;
     private String cpf;
     private EnderecoDTOResponse endereco;
