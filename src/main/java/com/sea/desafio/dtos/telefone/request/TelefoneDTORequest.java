@@ -1,6 +1,6 @@
 package com.sea.desafio.dtos.telefone.request;
 
-import com.sea.desafio.enums.TipoTelefone;
+import com.sea.desafio.infrastructure.enums.TipoTelefone;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
