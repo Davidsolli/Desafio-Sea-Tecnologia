@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class TelefoneDTOResponse {
 
+    private Long id;
     private String numero;
     private TipoTelefone tipoTelefone;
 

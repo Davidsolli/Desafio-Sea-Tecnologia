@@ -30,6 +30,11 @@ public class ClienteController {
         return ResponseEntity.ok( clienteService.listaClientes());
     }
 
+    @GetMapping("/{clienteId}")
+    public ResponseEntity<ClienteDTOResponse> encontrarClientePorId(@PathVariable Long clienteId) {
+        return ResponseEntity.ok(clienteService.encontrarClientePorId(clienteId));
+    }
+
     @PutMapping("/{clienteId}")
     public ResponseEntity<ClienteDTOResponse> atualizarDadosDeCliente(
             @Valid @RequestBody ClienteMinDTORequest clienteMinDTORequest, @PathVariable Long clienteId

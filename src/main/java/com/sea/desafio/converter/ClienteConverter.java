@@ -80,6 +80,7 @@ public class ClienteConverter {
 
     public ClienteDTOResponse paraClienteDTO(Cliente cliente) {
         return ClienteDTOResponse.builder()
+                .id(cliente.getId())
                 .nome(cliente.getNome())
                 .cpf(cliente.getCpf())
                 .endereco(paraEnderecoDTO(cliente.getEndereco()))
@@ -90,6 +91,7 @@ public class ClienteConverter {
 
     public EnderecoDTOResponse paraEnderecoDTO(Endereco endereco) {
         return EnderecoDTOResponse.builder()
+                .id(endereco.getId())
                 .cep(endereco.getCep())
                 .logradouro(endereco.getLogradouro())
                 .bairro(endereco.getBairro())
@@ -101,12 +103,14 @@ public class ClienteConverter {
 
     public EmailDTOResponse paraEmailDTO(Email email) {
         return EmailDTOResponse.builder()
+                .id(email.getId())
                 .email(email.getEmail())
                 .build();
     }
 
     public TelefoneDTOResponse paraTelefoneDTO(Telefone telefone) {
         return TelefoneDTOResponse.builder()
+                .id(telefone.getId())
                 .numero(telefone.getNumero())
                 .tipoTelefone(telefone.getTipoTelefone())
                 .build();

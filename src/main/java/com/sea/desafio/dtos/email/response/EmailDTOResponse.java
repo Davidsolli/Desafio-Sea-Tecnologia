@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class EmailDTOResponse {
 
+    private Long id;
     private String email;
 }

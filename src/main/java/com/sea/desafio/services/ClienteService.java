@@ -31,12 +31,20 @@ public class ClienteService {
     public ClienteDTOResponse atualizarDadosDeCliente(ClienteMinDTORequest clienteMinDTORequest, Long clienteId) {
         Cliente cliente = clienteRepository
                 .findById(clienteId)
-                .orElseThrow(() -> new ResourceNotFoundException("cliente não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado"));
         Cliente clienteAtualizado = clienteConverter.atualizarDadosDeClientes(cliente, clienteMinDTORequest);
         return clienteConverter.paraClienteDTO(clienteRepository.save(clienteAtualizado));
     }
 
     public void excluirCliente(Long clienteId) {
         clienteRepository.deleteById(clienteId);
+    }
+
+    public ClienteDTOResponse encontrarClientePorId(Long clienteId) {
+        return clienteConverter.paraClienteDTO(
+                clienteRepository
+                        .findById(clienteId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado"))
+        );
     }
 }
