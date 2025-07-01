@@ -1,6 +1,6 @@
-package com.sea.desafio.repositories;
+package com.sea.desafio.infrastructure.repositories;
 
-import com.sea.desafio.entities.Cliente;
+import com.sea.desafio.infrastructure.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

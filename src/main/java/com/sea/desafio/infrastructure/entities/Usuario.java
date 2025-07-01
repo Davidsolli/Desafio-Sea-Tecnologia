@@ -1,6 +1,5 @@
-package com.sea.desafio.entities;
+package com.sea.desafio.infrastructure.entities;
 
-import com.sea.desafio.enums.TipoTelefone;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,16 +8,16 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_telefone")
-public class Telefone {
+@Table(name = "tb_usuario")
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String numero;
-    private TipoTelefone tipoTelefone;
+    private String usuario;
+    private String senha;
 }
