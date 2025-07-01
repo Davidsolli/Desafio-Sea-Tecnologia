@@ -1,4 +1,4 @@
-package com.sea.desafio.entities;
+package com.sea.desafio.infrastructure.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

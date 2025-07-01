@@ -9,10 +9,10 @@ import com.sea.desafio.dtos.endereco.request.EnderecoDTORequest;
 import com.sea.desafio.dtos.endereco.response.EnderecoDTOResponse;
 import com.sea.desafio.dtos.telefone.request.TelefoneDTORequest;
 import com.sea.desafio.dtos.telefone.response.TelefoneDTOResponse;
-import com.sea.desafio.entities.Cliente;
-import com.sea.desafio.entities.Email;
-import com.sea.desafio.entities.Endereco;
-import com.sea.desafio.entities.Telefone;
+import com.sea.desafio.infrastructure.entities.Cliente;
+import com.sea.desafio.infrastructure.entities.Email;
+import com.sea.desafio.infrastructure.entities.Endereco;
+import com.sea.desafio.infrastructure.entities.Telefone;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

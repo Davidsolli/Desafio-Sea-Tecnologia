@@ -4,9 +4,9 @@ import com.sea.desafio.converter.ClienteConverter;
 import com.sea.desafio.dtos.cliente.request.ClienteDTORequest;
 import com.sea.desafio.dtos.cliente.request.ClienteMinDTORequest;
 import com.sea.desafio.dtos.cliente.response.ClienteDTOResponse;
-import com.sea.desafio.entities.Cliente;
-import com.sea.desafio.exceptions.ResourceNotFoundException;
-import com.sea.desafio.repositories.ClienteRepository;
+import com.sea.desafio.infrastructure.entities.Cliente;
+import com.sea.desafio.infrastructure.exceptions.ResourceNotFoundException;
+import com.sea.desafio.infrastructure.repositories.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

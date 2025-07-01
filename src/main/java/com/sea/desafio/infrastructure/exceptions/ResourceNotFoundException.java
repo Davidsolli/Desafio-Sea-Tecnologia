@@ -1,4 +1,4 @@
-package com.sea.desafio.exceptions;
+package com.sea.desafio.infrastructure.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 
