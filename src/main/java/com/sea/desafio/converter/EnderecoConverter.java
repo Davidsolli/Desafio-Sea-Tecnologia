@@ -1,6 +1,7 @@
 package com.sea.desafio.converter;
 
 import com.sea.desafio.dtos.endereco.request.EnderecoDTORequest;
+import com.sea.desafio.dtos.endereco.request.EnderecoMinDTORequest;
 import com.sea.desafio.dtos.endereco.response.EnderecoDTOResponse;
 import com.sea.desafio.infrastructure.entities.Endereco;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,22 @@ public class EnderecoConverter {
                 .cidade(endereco.getCidade())
                 .uf(endereco.getUf())
                 .complemento(endereco.getComplemento())
+                .build();
+    }
+
+    public Endereco atualizarEndereco(Endereco endereco, EnderecoMinDTORequest enderecoMinDTORequest) {
+        return Endereco.builder()
+                .id(endereco.getId())
+                .cep(endereco.getCep())
+                .logradouro(
+                        enderecoMinDTORequest.getLogradouro() != null ? enderecoMinDTORequest.getLogradouro() : endereco.getLogradouro()
+                )
+                .bairro(enderecoMinDTORequest.getBairro() != null ? enderecoMinDTORequest.getBairro() : endereco.getBairro())
+                .cidade(enderecoMinDTORequest.getCidade() != null ? enderecoMinDTORequest.getCidade() : endereco.getCidade())
+                .uf(enderecoMinDTORequest.getUf() != null ? enderecoMinDTORequest.getUf() : endereco.getUf())
+                .complemento(
+                        enderecoMinDTORequest.getComplemento() != null ? enderecoMinDTORequest.getComplemento() : endereco.getComplemento()
+                )
                 .build();
     }
 }
