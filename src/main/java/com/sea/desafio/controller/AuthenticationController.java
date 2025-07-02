@@ -4,6 +4,7 @@ import com.sea.desafio.dtos.usuario.AuthenticationDTO;
 import com.sea.desafio.dtos.usuario.CadastroDTO;
 import com.sea.desafio.infrastructure.entities.Usuario;
 import com.sea.desafio.infrastructure.repositories.UsuarioRepository;
+import com.sea.desafio.infrastructure.security.TokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.var;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
     private final UsuarioRepository usuarioRepository;
+    private final TokenService tokenService;
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@Valid @RequestBody AuthenticationDTO authenticationDTO) {
@@ -34,7 +36,9 @@ public class AuthenticationController {
 
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((Usuario) auth.getPrincipal());
+
+        return ResponseEntity.ok(token);
     }
 
     @PostMapping("/cadastro")
