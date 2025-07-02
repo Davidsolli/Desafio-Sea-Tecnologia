@@ -1,4 +1,4 @@
-package com.sea.desafio.enums;
+package com.sea.desafio.infrastructure.enums;
 
 public enum TipoTelefone {
 

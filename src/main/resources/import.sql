@@ -1,0 +1,2 @@
+INSERT INTO tb_usuario(email, role, senha) values('admin@admin.com', 0, '$2a$10$LcKhKarXVhYWVmXt1.3Yj.RMbATT4wzcyiXdbDzO58SG/zHv0uvQm');
+INSERT INTO tb_usuario(email, role, senha) values('usuario@usuario.com', 1, '$2a$10$wTlTUtmRPMKWUalpniCCvePTKPtKtYV4x2L7Eaqx0T11MqE63YyLa');
