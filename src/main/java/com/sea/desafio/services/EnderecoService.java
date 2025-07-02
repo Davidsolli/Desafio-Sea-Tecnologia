@@ -34,4 +34,11 @@ public class EnderecoService {
         Endereco enderecoAtualizado = enderecoConverter.atualizarEnderecoPorCep(endereco, dados);
         return enderecoConverter.paraEnderecoDTO(enderecoRepository.save(enderecoAtualizado));
     }
+
+    public EnderecoDTOResponse encontrarEnderecoPorId(Long enderecoId) {
+        Endereco endereco = enderecoRepository
+                .findById(enderecoId)
+                .orElseThrow(() -> new ResourceNotFoundException("Endereco não encontrado"));
+        return enderecoConverter.paraEnderecoDTO(endereco);
+    }
 }

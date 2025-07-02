@@ -32,4 +32,9 @@ public class EnderecoController {
     ) String cep) {
         return ResponseEntity.ok(enderecoService.atualizarEnderecoPorCep(enderecoId, cep));
     }
+
+    @GetMapping("/{enderecoId}")
+    public ResponseEntity<EnderecoDTOResponse> encontrarEnderecoPorId(@PathVariable Long enderecoId) {
+        return ResponseEntity.ok(enderecoService.encontrarEnderecoPorId(enderecoId));
+    }
 }

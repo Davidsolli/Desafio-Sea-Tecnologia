@@ -56,7 +56,7 @@ public class EnderecoConverter {
                 .cep(dados.getCep())
                 .logradouro(dados.getLogradouro())
                 .bairro(dados.getBairro())
-                .cidade(endereco.getCidade())
+                .cidade(dados.getLocalidade())
                 .uf(dados.getUf())
                 .complemento(endereco.getComplemento())
                 .cliente(endereco.getCliente())
