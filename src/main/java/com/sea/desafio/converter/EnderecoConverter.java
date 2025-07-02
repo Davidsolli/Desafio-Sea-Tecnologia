@@ -1,5 +1,6 @@
 package com.sea.desafio.converter;
 
+import com.sea.desafio.dtos.ViaCepDTO;
 import com.sea.desafio.dtos.endereco.request.EnderecoDTORequest;
 import com.sea.desafio.dtos.endereco.request.EnderecoMinDTORequest;
 import com.sea.desafio.dtos.endereco.response.EnderecoDTOResponse;
@@ -45,6 +46,20 @@ public class EnderecoConverter {
                 .complemento(
                         enderecoMinDTORequest.getComplemento() != null ? enderecoMinDTORequest.getComplemento() : endereco.getComplemento()
                 )
+                .cliente(endereco.getCliente())
+                .build();
+    }
+
+    public Endereco atualizarEnderecoPorCep(Endereco endereco, ViaCepDTO dados) {
+        return Endereco.builder()
+                .id(endereco.getId())
+                .cep(dados.getCep())
+                .logradouro(dados.getLogradouro())
+                .bairro(dados.getBairro())
+                .cidade(endereco.getCidade())
+                .uf(dados.getUf())
+                .complemento(endereco.getComplemento())
+                .cliente(endereco.getCliente())
                 .build();
     }
 }

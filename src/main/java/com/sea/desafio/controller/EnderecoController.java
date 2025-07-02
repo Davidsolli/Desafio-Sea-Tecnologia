@@ -24,4 +24,12 @@ public class EnderecoController {
     ) {
         return ResponseEntity.ok(enderecoService.atualizarEndereco(enderecoId, enderecoMinDTORequest));
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/cep/{enderecoId}")
+    public ResponseEntity<EnderecoDTOResponse> atualizarEnderecoPorCep(
+            @PathVariable Long enderecoId, @RequestParam(value = "cep"
+    ) String cep) {
+        return ResponseEntity.ok(enderecoService.atualizarEnderecoPorCep(enderecoId, cep));
+    }
 }
