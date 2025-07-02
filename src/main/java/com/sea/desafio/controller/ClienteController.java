@@ -8,6 +8,7 @@ import com.sea.desafio.services.ClienteService;
 import com.sea.desafio.services.ViaCepService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ public class ClienteController {
     private final ClienteService clienteService;
     private final ViaCepService viaCepService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ClienteDTOResponse> salvarNovoCliente(
             @Valid @RequestBody ClienteDTORequest clienteDTORequest
@@ -38,6 +40,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.encontrarClientePorId(clienteId));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{clienteId}")
     public ResponseEntity<ClienteDTOResponse> atualizarDadosDeCliente(
             @Valid @RequestBody ClienteMinDTORequest clienteMinDTORequest, @PathVariable Long clienteId
@@ -45,6 +48,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.atualizarDadosDeCliente(clienteMinDTORequest, clienteId));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{clienteId}")
     public ResponseEntity<Void> excluirCliente(@PathVariable Long clienteId) {
         clienteService.excluirCliente(clienteId);
