@@ -28,6 +28,12 @@ public class Usuario implements UserDetails {
     private String senha;
     private UserRole role;
 
+    public Usuario(String email, String senha, UserRole role) {
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == UserRole.ADMIN) return List.of(
