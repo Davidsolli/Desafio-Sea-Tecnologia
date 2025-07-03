@@ -22,5 +22,4 @@ public class Email {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
 }

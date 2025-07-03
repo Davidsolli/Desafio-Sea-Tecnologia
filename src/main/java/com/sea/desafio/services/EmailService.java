@@ -49,6 +49,8 @@ public class EmailService {
     }
 
     public void deletarEmailPorId(Long emailId) {
-        emailRepository.deleteById(emailId);
+        Email email = emailRepository.findById(emailId)
+                .orElseThrow(() -> new ResourceNotFoundException("Email não encontrado"));
+        emailRepository.delete(email);
     }
 }
